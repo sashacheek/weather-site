@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
+
+p, input, label {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Slabo 27px', serif;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+body {
+  background-color: #592759;
+}
+
+#all-content {
+  background-color: #3e1c3e;
+  color: white;
+  margin: 0 10%;
+  text-align: center;
+  min-height: 100vh;
+}
+
+header {
+  text-align: left;
+}
+
+.header-icon {
+  width: 40px;
+  float: left;
+}
+
+.main-nav {
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+
+.main-nav ul {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+}
+
+.main-nav ul li {
+  background-color: #2b102b;
+  padding: 1em;
+  border-radius: 3px;
+  flex: 1 1 auto;
+  margin: 0 0.5em;
+}
+
+.main-nav ul li a {
+  text-decoration: none;
+  color: white;
+  justify-content: center;
+}
+
+.main-nav ul li a:hover {
+  color: aqua;
+}
+
+.searchbar {
+  padding: 10px;
+}
+
+.searchbar label, .searchbar input {
+  font-size: 24px;
+}
+
+#page {
+  font-size: 24px;
+}
+
+main {
+  padding: 1em 0;
+}
+
+.weather-card {
+  border: 2px solid silver;
+  border-radius: 0.5em;
+  margin: 1em;
+}
+
+h1 {
+  margin: 0;
+}
+
+h2 {
+  font-size: 72px;
+  margin: 0;
+}
+
+.header-section {
+  padding: 1em 5vw 0;
+}
+
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.main-weather {
+  padding: 35px;
+}
+
+.weather-icon {
+  width: 50%;
+  max-width: 200px;
+  padding: 35px;
+}
+
+h3 {
+  font-size: 36px;
+}
+
+#scenarios {
+  text-align: left;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 2vw 2em;
+}
+
+.color-grid h4,
+.color-grid div {
+  border: 2px solid silver;
+  align-self: stretch;
+  margin: 0;
+  padding: 2em 10%;
+}
+
+.edges-color {
+  background-color: #592759;
+}
+
+.main-content-color {
+  background-color: #3e1c3e;
+}
+
+.text-color {
+  background-color: white;
+}
+
+.border-color {
+  background-color: silver;
+}
+
+.nav-hover-color {
+  background-color: aqua;
+}
+
+.nav-footer-color {
+  background-color: #2b102b;
+}
+
+.hover-color {
+  color: aqua;
+}
+
+@media only screen and (max-width: 625px) {
+  .main-nav ul {
+    display: block;
+  }
+
+  #all-content {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 475px) {
+  #outer-card {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+}
