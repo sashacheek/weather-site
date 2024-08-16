@@ -34,6 +34,9 @@
                 </form>
             </section>
             <section class="weather-card">
+                <% if(icon !== null){ %>
+                    <img src="<%= icon %>" >
+                  <% } %>
                 <% if(weather !== null){ %>
                     <p><%= weather %></p>
                   <% } %>
