@@ -14,7 +14,7 @@ app.set('view engine', 'ejs')
 
 app.get('/', function (req, res) {
   // res.send('Hello World!')
-  res.render('home', {weather: null, icon: null, error: ''});
+  res.render('home', {city: null, icon: null, temp: null, status: null, desc: null, feelsLike: null, humidity: null, wind: null, error: ''});
 })
 
 app.post('/', function (req, res) {
@@ -22,20 +22,25 @@ app.post('/', function (req, res) {
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
   request(url, function (err, response, body) {
       if(err){
-        res.render('home', {weather: null, icon: null, error: 'Error, please try again'});
+        res.render('home', {city: null, icon: null, temp: null, status: null, desc: null, feelsLike: null, humidity: null, wind: null, error: 'Error, please try again'});
       } else {
         let weather = JSON.parse(body)
         if(weather.main == undefined){
-          res.render('home', {weather: null, icon: null, error: 'Error, please try again'});
+          res.render('home', {city: null, icon: null, temp: null, status: null, desc: null, feelsLike: null, humidity: null, wind: null, error: 'Error, please try again'});
         } else {
+          // weather icon
           let weatherId = weather.weather[0].main;
           let weatherIcon = processing.processIcon(weatherId);
-          // get weather main id
-          // send to processing
-          // processing determines which image to render based on given id
-          // send image src here
-          let weatherText = `It's ${weather.main.temp} degrees in ${weather.name}!`;
-          res.render('home', {weather: weatherText, icon: weatherIcon, error: null});
+          // weather city
+          let city = weather.name;
+          // weather temp
+          let temp = weather.main.temp;
+          let status = weather.weather[0].main;
+          let desc = weather.weather[0].description;
+          let feelsLike = weather.main.feels_like;
+          let humidity = weather.main.humidity;
+          let wind = weather.wind.speed;
+          res.render('home', {city: city, icon: weatherIcon,  temp: temp, status: status, desc: desc, feelsLike: feelsLike, humidity: humidity, wind: wind, error: null});
         }
       }
     });

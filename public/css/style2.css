@@ -2,20 +2,20 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
 
-p, input {
+p, input, label {
   font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
 }
 
 h1,
 h2,
 h3,
-h4,
-label {
+h4 {
   font-family: 'Slabo 27px', serif;
 }
 
-label {
-    /* font-weight: bold; */
+.capitalize {
+  text-transform: capitalize;
 }
 
 body {
@@ -68,6 +68,14 @@ header {
   color: aqua;
 }
 
+.searchbar {
+  padding: 10px;
+}
+
+.searchbar label, .searchbar input {
+  font-size: 24px;
+}
+
 .weather-card {
   border: 2px solid silver;
   border-radius: 0.5em;
@@ -75,6 +83,11 @@ header {
 }
 
 h1 {
+  margin: 0;
+}
+
+h2 {
+  font-size: 72px;
   margin: 0;
 }
 
@@ -93,6 +106,20 @@ h1 {
 h3 {
   margin: 0;
   padding: 0;
+}
+
+.main-weather {
+  padding: 35px;
+}
+
+.weather-icon {
+  width: 50%;
+  max-width: 300px;
+  padding: 35px;
+}
+
+h3 {
+  font-size: 36px;
 }
 
 #scenarios {
