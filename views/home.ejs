@@ -14,7 +14,7 @@
             <section class="header-section">
                 <img src="/img/weather-icon.png" alt="Golden Weather Icon" class="header-icon">
                 <h1>Golden Weather Services</h1>
-                <h3>Home</h3>
+                <h3 id="page">Home</h3>
             </section>
             <!-- <nav class="main-nav">
                 <ul>
@@ -33,7 +33,7 @@
                     <!-- <input type="submit" value="Get Weather"> -->
                 </form>
             </section>
-            <section class="weather-card">
+            <section class="weather-card" id="outer-card">
                 <% if(city !== null){ %>
                     <section class="weather-card main-weather">
                         <h2><%= city %></h2>
@@ -51,18 +51,10 @@
                   <% if(error !== null){ %>
                     <section class="weather-card"><p><%= error %></p></section>
                   <% } %>
-            <section class="weather-card">
+            <!-- <section class="weather-card">
                 <h2>Site Purpose</h2>
                 <p>The purpose of this site is to display the weather forecast. Vistors will need to be able to view a broad multi-day forecast as well as a break down of the forecast by hour. It will need to include the temperature in fahrenheit or celcius, the humidity, and any precipitation.</p>
-            </section class="weather-card">
-            <section class="weather-card">
-                <h2>Available Domain</h2>
-                <p>goldenweather.us</p>
-                <p>Cost: $12/year</p>
-            </section>
-            <section class="weather-card" id="logo-card">
-                <h2>Logo</h2>
-                <img src="images/weather-icon.png" alt="Golden Weather Icon">
+            </section class="weather-card"> -->
             </section>
         </main>
     </div>
