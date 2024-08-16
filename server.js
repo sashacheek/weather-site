@@ -14,7 +14,7 @@ app.set('view engine', 'ejs')
 
 app.get('/', function (req, res) {
   // res.send('Hello World!')
-  res.render('home', {city: null, icon: null, temp: null, status: null, desc: null, feelsLike: null, humidity: null, wind: null, error: ''});
+  res.render('home', {city: null, icon: null, temp: null, status: null, desc: null, feelsLike: null, humidity: null, wind: null, error: null});
 })
 
 app.post('/', function (req, res) {

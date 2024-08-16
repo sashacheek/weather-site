@@ -168,6 +168,15 @@ h3 {
   color: aqua;
 }
 
+.flexslider {
+  background-color: transparent;
+  border: 0;
+  width: 50%;
+  padding: 30px 10px;
+  margin: 0 auto;
+  max-width: 300px;
+}
+
 @media only screen and (max-width: 625px) {
   .main-nav ul {
     display: block;
