@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/style2.css">
+    <title>Golden Weather Planning Document Home</title>
+</head>
+<body>
+    <div id="all-content">
+        <header>
+            <section class="header-section">
+                <img src="/img/weather-icon.png" alt="Golden Weather Icon" class="header-icon">
+                <h1>Golden Weather Services</h1>
+                <h3>Home</h3>
+            </section>
+            <!-- <nav class="main-nav">
+                <ul>
+                    <li><a href=#>Home</a></li>
+                    <li><a href="html/target-audience.html">Target Audience</a></li>
+                    <li><a href="html/color-scheme.html">Color Scheme</a></li>
+                    <li><a href="html/typography.html">Typography</a></li>
+                </ul>
+            </nav> -->
+        </header>
+        <main>
+            <section>
+                <form action="/" method="post">
+                    <label for="city">City:</label>
+                    <input type="text" name="city" id="city">
+                    <!-- <input type="submit" value="Get Weather"> -->
+                </form>
+            </section>
+            <section class="weather-card">
+                <% if(weather !== null){ %>
+                    <p><%= weather %></p>
+                  <% } %>
+                  <% if(error !== null){ %>
+                    <p><%= error %></p>
+                  <% } %>
+            </section>
+            <section class="weather-card">
+                <h2>Site Name</h2>
+                <p>Golden Weather Services</p>
+            </section>
+            <section class="weather-card">
+                <h2>Site Purpose</h2>
+                <p>The purpose of this site is to display the weather forecast. Vistors will need to be able to view a broad multi-day forecast as well as a break down of the forecast by hour. It will need to include the temperature in fahrenheit or celcius, the humidity, and any precipitation.</p>
+            </section class="weather-card">
+            <section class="weather-card">
+                <h2>Available Domain</h2>
+                <p>goldenweather.us</p>
+                <p>Cost: $12/year</p>
+            </section>
+            <section class="weather-card" id="logo-card">
+                <h2>Logo</h2>
+                <img src="images/weather-icon.png" alt="Golden Weather Icon">
+            </section>
+        </main>
+    </div>
+</body>
+</html>
