@@ -177,6 +177,32 @@ h3 {
   max-width: 300px;
 }
 
+.weather-top {
+  margin-top: 20px;
+}
+
+.slides {
+  display: flex;
+  align-items: center;
+}
+
+footer {
+  padding: 20px 10px;
+}
+
+.intext-link {
+  color: rgb(68, 249, 252);
+}
+
+.intext-link:hover, .intext-link:visited {
+  color: rgb(212, 192, 255);
+}
+
+sup {
+  font-size: 50%;
+  padding-left: 0.15em;
+}
+
 @media only screen and (max-width: 625px) {
   .main-nav ul {
     display: block;
