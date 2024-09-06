@@ -24,4 +24,8 @@ function processIcon(category){
     }
 }
 
+function convertCityToCoordinates(city, state, country) {
+
+}
+
 module.exports={processIcon}

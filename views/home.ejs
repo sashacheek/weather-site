@@ -31,7 +31,16 @@
                 <form action="/" method="post" class="searchbar">
                     <label for="city">City: </label>
                     <input type="text" name="city" id="city">
-                    <!-- <input type="submit" value="Get Weather"> -->
+                    <label for="state" class="hidden" id="state-label">State: </label>
+                    <select class="hidden" name="state" id="state">
+                      <option value="state1">state1</option>
+                    </select>
+                    <label for="country">Country: </label>
+                    <select name="country" id="country">
+                      <% for(var i=0; i<countries.length; i++) {%>
+                         <option value="<%= countries[i] %>" ><%= countries[i] %></option>
+                      <% } %>
+                      </select>
                 </form>
             </section>
                 <% if(city !== null){ %>

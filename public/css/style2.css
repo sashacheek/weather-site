@@ -2,7 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
 
-p, input, label {
+p, input, label, select {
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 18px;
 }
@@ -72,7 +72,7 @@ header {
   padding: 10px;
 }
 
-.searchbar label, .searchbar input {
+label, input, select {
   font-size: 24px;
 }
 
@@ -201,6 +201,10 @@ footer {
 sup {
   font-size: 50%;
   padding-left: 0.15em;
+}
+
+.hidden {
+  display: none;
 }
 
 @media only screen and (max-width: 625px) {
