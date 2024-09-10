@@ -33,10 +33,14 @@
                     <input type="text" name="city" id="city">
                     <label for="state" class="hidden" id="state-label">State: </label>
                     <select class="hidden" name="state" id="state">
-                      <option value="state1">state1</option>
+                      <option value="" selected> </option>
+                      <% for(const [key, value] of Object.entries(states)) {%>
+                        <option value="<%= value %>" ><%= key %></option>
+                     <% } %>
                     </select>
                     <label for="country">Country: </label>
                     <select name="country" id="country">
+                      <option value="" selected> </option>
                       <% for(var i=0; i<countries.length; i++) {%>
                          <option value="<%= countries[i] %>" ><%= countries[i] %></option>
                       <% } %>

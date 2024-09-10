@@ -13,27 +13,47 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs')
 
-let viewData = { city: null, icon: null, temp: null, status: null, desc: null, feelsLike: null, humidity: null, wind: null, error: null, countries: constants.countries, states: constants.states }
+// set viewData
+var viewData = { city: null, icon: null, temp: null, status: null, desc: null, feelsLike: null, humidity: null, wind: null, error: null, countries: constants.countries, states: constants.states }
 
+// default page
 app.get('/', function (req, res) {
   res.render('home', viewData);
 })
 
-app.post('/', function (req, res) {
-    // let city = req.body.city
-    // let state = req.body.state
-    // let country = req.body.country
-    // get city, state code, country code from user
-    // do call based on city provided
-    // return lat and long
+app.post('/', async function (req, res) {
+  // reset viewData
+  var viewData = { city: null, icon: null, temp: null, status: null, desc: null, feelsLike: null, humidity: null, wind: null, error: null, countries: constants.countries, states: constants.states }
+
+    let city = req.body.city
+    let state = req.body.state
+    let country = req.body.country
+
+    var location;
+
+    if (state == "") {
+      location = await convertCityToCoordinates(city, country, res)
+
+    } else {
+      location = await convertCityStateToCoordinates(city, state, country , res)
+    }
+
+    if (location == "Error, please try again") {
+      viewData.error = location;
+      res.render('home', viewData);
+    }
+    // else if (location == undefined) {
+    //   res.render('home', viewData);
+    //   console.log("error")
+    // }
+    else {
+
+    lat = location[0].lat;
+    lon = location[0].lon;
 
     // use lat and long to call weather data
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`
 
-
-    // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
-    // let cityCall = `http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={apiKey}`
-    let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
-    // http://api.openweathermap.org/geo/1.0/reverse?lat={lat}&lon={lon}&limit={limit}&appid={API key}
   request(url, function (err, response, body) {
 
       // if request fails
@@ -63,9 +83,78 @@ app.post('/', function (req, res) {
           res.render('home', viewData);
         }
       }
-    });
+    })};
   })
 
 app.listen(3000, function () {
   console.log('Weather app listening on port 3000!')
 })
+
+async function convertCityToCoordinates(city, country) {
+  let url = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${country}&limit=1&appid=${apiKey}`;
+  var location = await getCoordsResponse(url);
+  return new Promise(function(resolve) {
+    resolve(location);
+  })
+
+}
+
+async function convertCityStateToCoordinates(city, state, country) {
+  let url = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${country}&limit=1&appid=${apiKey}`;
+  var location = await getCoordsResponse(url);
+  return new Promise(function(resolve) {
+    resolve(location);
+  })
+
+}
+
+function getCoordsResponse(url) {
+  return new Promise((resolve, reject) => {
+    request(url, (err, response, body) => {
+      if (err) {
+        // Reject the promise if there's an error with the request
+        return reject("Error, please try again");
+      }
+
+      try {
+        const location = JSON.parse(body);
+
+        if (location == undefined) {
+          return reject("Error, please try again");
+        }
+
+        resolve(location);
+      } catch (parseError) {
+        reject("Error, please try again");
+      }
+    });
+  });
+}
+
+// async function getCoordsResponse(url) {
+//   request(url, function (err, response, body) {
+//     console.log("made it");
+
+//       // if request fails
+//       if(err) {
+//         return new Promise(function(resolve) {
+//           resolve("Error, please try again");
+//         })
+//       } else {
+//           var location = JSON.parse(body);
+  
+//           // if no result for location found
+//           if(location == undefined){
+//             return new Promise(function(resolve) {
+//               resolve("Error, please try again");
+//             })
+//             } else {
+//               console.log("real location")
+//               console.log(location);
+//               return new Promise(function(resolve) {
+//                 resolve(location);
+//               })
+//             }
+//           }
+//         });
+// }
