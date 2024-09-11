@@ -42,10 +42,7 @@ app.post('/', async function (req, res) {
       viewData.error = location;
       res.render('home', viewData);
     }
-    // else if (location == undefined) {
-    //   res.render('home', viewData);
-    //   console.log("error")
-    // }
+
     else {
 
     lat = location[0].lat;
@@ -92,19 +89,22 @@ app.listen(3000, function () {
 
 async function convertCityToCoordinates(city, country) {
   let url = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${country}&limit=1&appid=${apiKey}`;
-  var location = await getCoordsResponse(url);
-  return new Promise(function(resolve) {
-    resolve(location);
-  })
-
+  try {
+    const location = await getCoordsResponse(url);
+    return location;
+  } catch (error) {
+    return error;
+  }
 }
 
 async function convertCityStateToCoordinates(city, state, country) {
   let url = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${country}&limit=1&appid=${apiKey}`;
-  var location = await getCoordsResponse(url);
-  return new Promise(function(resolve) {
-    resolve(location);
-  })
+  try {
+    const location = await getCoordsResponse(url);
+    return location;
+  } catch (error) {
+    return error;
+  }
 
 }
 
@@ -123,6 +123,10 @@ function getCoordsResponse(url) {
           return reject("Error, please try again");
         }
 
+        else if (location[0] == undefined) {
+          return reject("Error, please try again");
+        }
+
         resolve(location);
       } catch (parseError) {
         reject("Error, please try again");
@@ -131,30 +135,3 @@ function getCoordsResponse(url) {
   });
 }
 
-// async function getCoordsResponse(url) {
-//   request(url, function (err, response, body) {
-//     console.log("made it");
-
-//       // if request fails
-//       if(err) {
-//         return new Promise(function(resolve) {
-//           resolve("Error, please try again");
-//         })
-//       } else {
-//           var location = JSON.parse(body);
-  
-//           // if no result for location found
-//           if(location == undefined){
-//             return new Promise(function(resolve) {
-//               resolve("Error, please try again");
-//             })
-//             } else {
-//               console.log("real location")
-//               console.log(location);
-//               return new Promise(function(resolve) {
-//                 resolve(location);
-//               })
-//             }
-//           }
-//         });
-// }

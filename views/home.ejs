@@ -29,8 +29,11 @@
         <main>
             <section>
                 <form action="/" method="post" class="searchbar">
+                  <div>
                     <label for="city">City: </label>
                     <input type="text" name="city" id="city">
+                  </div>
+                  <div>
                     <label for="state" class="hidden" id="state-label">State: </label>
                     <select class="hidden" name="state" id="state">
                       <option value="" selected> </option>
@@ -38,13 +41,17 @@
                         <option value="<%= value %>" ><%= key %></option>
                      <% } %>
                     </select>
+                  </div>
+                  <div>
                     <label for="country">Country: </label>
                     <select name="country" id="country">
                       <option value="" selected> </option>
-                      <% for(var i=0; i<countries.length; i++) {%>
-                         <option value="<%= countries[i] %>" ><%= countries[i] %></option>
-                      <% } %>
+                      <% for(const [key, value] of Object.entries(countries)) {%>
+                        <option value="<%= value %>" ><%= key %></option>
+                     <% } %>
                       </select>
+                    </div>
+                    <div><button type="submit">SUBMIT</button></div>
                 </form>
             </section>
                 <% if(city !== null){ %>

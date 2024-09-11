@@ -207,6 +207,27 @@ sup {
   display: none;
 }
 
+.searchbar div {
+  display: inline-block;
+  padding: 10px 3px;
+}
+
+#city {
+  max-width: 200px;
+}
+
+#state {
+  max-width: 200px;
+}
+
+#country {
+  max-width: 250px;
+}
+
+@media only screen and (max-width: 1150px) {
+
+}
+
 @media only screen and (max-width: 625px) {
   .main-nav ul {
     display: block;
