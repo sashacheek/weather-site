@@ -301,6 +301,7 @@ const states = {
 "Tennessee" : "TN",
 "Texas" : "TX",
 "Trust Territories" : "TT",
+"United States Minor Outlying Islands" : "UM",
 "Utah" : "UT",
 "Vermont" : "VT",
 "Virginia" : "VA",
